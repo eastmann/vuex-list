@@ -1,3 +1,4 @@
+import { mapActions } from 'vuex';
 <template>
     <div id="product-list-two">
         <h2>Product List Two</h2>
@@ -12,21 +13,23 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
     computed: {
         products() {
             return this.$store.state.products
         },
 
-        saleProducts() {
-            return this.$store.getters.saleProducts
-        }
+        ...mapGetters([
+            'saleProducts'
+        ])
     },
 
     methods: {
-        reducePrice(amount) {
-            this.$store.dispatch('reducePrice', amount)
-        }
+        ...mapActions([
+            'reducePrice'
+        ])
     }
 }
 </script>
