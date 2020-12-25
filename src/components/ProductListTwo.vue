@@ -7,7 +7,7 @@
                 <span class="price">${{ product.price }}</span>
             </li>
         </ul>
-        <button @click="reducePrice">Reduce Price</button>
+        <button @click="reducePrice(5)">Reduce Price</button>
     </div>
 </template>
 
@@ -24,8 +24,8 @@ export default {
     },
 
     methods: {
-        reducePrice() {
-            this.$store.commit('reducePrice')
+        reducePrice(amount) {
+            this.$store.dispatch('reducePrice', amount)
         }
     }
 }
